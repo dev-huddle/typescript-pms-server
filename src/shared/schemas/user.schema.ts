@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { User } from "../entities";
-import { UserAccountStatus } from "../constants";
+import { UserAccountStatus, UserAccountTypes } from "../constants";
 
 const userSchema: Schema = new Schema<User>({
   awscognito_user_id: {
@@ -31,10 +31,17 @@ const userSchema: Schema = new Schema<User>({
     enum: [
       UserAccountStatus.ACTIVE,
       UserAccountStatus.BLOCKED,
-      UserAccountStatus.INCOMPLETE,
-      UserAccountStatus.UNCONFIRM,
+      UserAccountStatus.INCOMPLETE
     ],
     required: true,
+  },
+  account_type: {
+    type: String,
+    enum: [
+      UserAccountTypes.INDIVIDUAL,
+      UserAccountTypes.ORGANIZATION,
+    ],
+    default: UserAccountTypes.INDIVIDUAL,
   },
   isFirstLogin: {
     type: Boolean,

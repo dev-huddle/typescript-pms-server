@@ -1,10 +1,14 @@
 export enum UserRoles {
-  CUSTOMER = "CUSTOMER",
+  CUSTOMER = "CUSTOMER"
 }
 
 export enum UserAccountStatus {
   ACTIVE = "ACTIVE",
   BLOCKED = "BLOCKED",
-  UNCONFIRM = "UNCONFIRM",
   INCOMPLETE = "INCOMPLETE",
+}
+
+export enum UserAccountTypes {
+  INDIVIDUAL = "INDIVIDUAL",
+  ORGANIZATION = "ORGANIZATION"
 }

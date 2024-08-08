@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { Base } from "./base.entity";
-import { UserAccountStatus } from "../constants";
+import { UserAccountStatus, UserAccountTypes } from "../constants";
 
 export default interface User extends Base {
   awscognito_user_id?: string;
@@ -11,5 +11,6 @@ export default interface User extends Base {
   stripe_card_type?: string;
   active_plan?: mongoose.Types.ObjectId; // filled only when user has an active plan
   status?: UserAccountStatus;
+  account_type?: UserAccountTypes;
   isFirstLogin?: boolean;
 }
