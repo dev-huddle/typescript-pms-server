@@ -1,13 +1,13 @@
-#Introduction
+# Introduction
 The Property Management System is a comprehensive software solution aimed at simplifying and automating the management of residential and commercial properties. This server-side application is built to handle a wide range of tasks, including tenant management, lease management, maintenance scheduling, and much more.
 
-##Current Features
+## Current Features
 Authentication and Authorization:
 - Secure user login and registration.
 - Role-based access control ensuring that users have appropriate permissions based on their roles (e.g., Admin, Property Manager, Tenant).
 - JWT (JSON Web Token) based session management.
 
-##Upcoming Features
+## Upcoming Features
 Hotel Property Management:
 - Integration of hotel-specific functionalities such as room booking, reservation management, and guest check-in/check-out.
 - Support for managing hotel amenities, services, and billing.
@@ -19,8 +19,8 @@ This project leverages the following technologies:
 - Express.js: A minimal and flexible Node.js web application framework, providing a robust set of features for building APIs and web applications.
 - TypeScript: A strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
 
-#Getting Started
-##Prerequisites
+# Getting Started
+## Prerequisites
 To get started with this project, ensure you have the following installed on your local machine:
 
 Node.js (v14 or later)
