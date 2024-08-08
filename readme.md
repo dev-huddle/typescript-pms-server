@@ -29,16 +29,16 @@ TypeScript (globally installed for development)
 Installation
 Clone the repository:
 
-'''
+```
 git clone https://github.com/your-username/property-management-system-server.git
 cd property-management-system-server
-'''
+```
 
 Install dependencies:
 
-'''
+```
 yarn install
-'''
+```
 
 Set up environment variables:
 
@@ -47,13 +47,13 @@ Add your environment-specific variables (e.g., database connection strings, JWT 
 Run the application:
 
 Compile TypeScript files:
-'''
+```
 yarn build
-'''
+```
 Start the server:
-'''
+```
 yarn dev
-'''
+```
 
 Access the API:
 
