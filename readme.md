@@ -31,6 +31,10 @@ Clone the repository:
 
 ```
 git clone https://github.com/your-username/property-management-system-server.git
+```
+
+Move into folder
+```
 cd property-management-system-server
 ```
 
