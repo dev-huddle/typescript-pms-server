@@ -1,10 +1,11 @@
 import { injectable } from "tsyringe";
-import { CreatePropertyInput, CreatePropertyOutput } from "../dto";
+import { CreatePropertyInput, CreatePropertyOutput, FetchAllPropertyInput, FetchAllPropertyOutput } from "../dto";
 import { PropertyRepository, UserRepository } from "../../../shared/repositories";
 import { Database } from "../../../shared/facade";
 import { BadRequestError } from "../../../shared/errors";
 import { PropertyMedia } from "../../../shared/entities";
 import { PropertyFileTypes } from "../../../shared/constants";
+import { DeletePropertyInput, DeletePropertyOutput, FetchOnePropertyInput, FetchOnePropertyOutput } from "../dto/property.dto";
 
 @injectable()
 export default class PropertyService {
@@ -47,5 +48,45 @@ export default class PropertyService {
     return {
       is_created: true,
     };
+  }
+
+  async fetchAll(args: FetchAllPropertyInput): Promise<FetchAllPropertyOutput> {
+    const { } = args;
+
+    const response = await this.propertyRepository.fetchAll();
+
+    return {
+        properties: response
+    }
+  }
+
+  async fetchOne(args: FetchOnePropertyInput): Promise<FetchOnePropertyOutput> {
+
+    const { property_id } = args;
+
+    const response = await this.propertyRepository.fetchOneById(property_id)
+
+    if(!response){
+        throw new BadRequestError("property not found")
+    }
+
+    return {
+        property: response
+    }
+  }
+
+  async delete(args: DeletePropertyInput): Promise<DeletePropertyOutput> {
+
+    const { property_id } = args;
+
+    const response = await this.propertyRepository.delete(property_id);
+
+    if(!response){
+        throw new BadRequestError("failed to delete property")
+    }
+
+    return {
+        is_deleted: false
+    }
   }
 }

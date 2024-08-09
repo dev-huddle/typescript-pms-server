@@ -1,5 +1,5 @@
 import { PropertyTypes } from "../../../shared/constants";
-import { PropertyAddress } from "../../../shared/entities";
+import { Property, PropertyAddress } from "../../../shared/entities";
 
 export type CreatePropertyInput = {
   name: string;
@@ -12,3 +12,27 @@ export type CreatePropertyInput = {
 export type CreatePropertyOutput = {
   is_created: boolean;
 };
+
+export type FetchAllPropertyInput = {
+
+}
+
+export type FetchAllPropertyOutput = {
+    properties: Property[]
+}
+
+export type FetchOnePropertyInput = {
+    property_id: string;
+}
+
+export type FetchOnePropertyOutput = {
+    property: Property
+}
+
+export type DeletePropertyInput = {
+    property_id: string
+}
+
+export type DeletePropertyOutput = {
+    is_deleted: boolean;
+}
