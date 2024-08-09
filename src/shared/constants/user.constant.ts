@@ -1,5 +1,5 @@
 export enum UserRoles {
-  CUSTOMER = "CUSTOMER"
+  CUSTOMER = "CUSTOMER",
 }
 
 export enum UserAccountStatus {
@@ -10,5 +10,5 @@ export enum UserAccountStatus {
 
 export enum UserAccountTypes {
   INDIVIDUAL = "INDIVIDUAL",
-  ORGANIZATION = "ORGANIZATION"
+  ORGANIZATION = "ORGANIZATION",
 }

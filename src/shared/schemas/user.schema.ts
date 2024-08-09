@@ -31,16 +31,13 @@ const userSchema: Schema = new Schema<User>({
     enum: [
       UserAccountStatus.ACTIVE,
       UserAccountStatus.BLOCKED,
-      UserAccountStatus.INCOMPLETE
+      UserAccountStatus.INCOMPLETE,
     ],
     required: true,
   },
   account_type: {
     type: String,
-    enum: [
-      UserAccountTypes.INDIVIDUAL,
-      UserAccountTypes.ORGANIZATION,
-    ],
+    enum: [UserAccountTypes.INDIVIDUAL, UserAccountTypes.ORGANIZATION],
     default: UserAccountTypes.INDIVIDUAL,
   },
   isFirstLogin: {
