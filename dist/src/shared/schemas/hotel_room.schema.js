@@ -19,7 +19,11 @@ const hotelRoomSchema = new mongoose_1.Schema({
     },
     status: {
         type: String,
-        enum: [constants_1.HotelRoomStatus.AVAILABLE, constants_1.HotelRoomStatus.BOOKED, constants_1.HotelRoomStatus.MAINTENANCE],
+        enum: [
+            constants_1.HotelRoomStatus.AVAILABLE,
+            constants_1.HotelRoomStatus.BOOKED,
+            constants_1.HotelRoomStatus.MAINTENANCE,
+        ],
         required: true,
     },
     created_at: {

@@ -37,7 +37,7 @@ let PropertyController = class PropertyController {
                     creator_id: sub,
                     address,
                     type,
-                    files
+                    files,
                 });
                 (0, helper_1.Res)({
                     res,

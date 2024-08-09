@@ -35,7 +35,7 @@ let HotelRoomTypeController = class HotelRoomTypeController {
                     description,
                     amount,
                     discount_amount,
-                    hotel_id
+                    hotel_id,
                 });
                 (0, helper_1.Res)({
                     res,
@@ -69,7 +69,9 @@ let HotelRoomTypeController = class HotelRoomTypeController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { id } = req.params;
-                const response = yield this.roomTypeService.fetchOne({ room_type_id: id });
+                const response = yield this.roomTypeService.fetchOne({
+                    room_type_id: id,
+                });
                 (0, helper_1.Res)({
                     res,
                     code: constants_1.StatusCodes.OK,

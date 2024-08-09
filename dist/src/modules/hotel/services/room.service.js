@@ -22,7 +22,6 @@ const tsyringe_1 = require("tsyringe");
 const repositories_1 = require("../../../shared/repositories");
 const facade_1 = require("../../../shared/facade");
 const errors_1 = require("../../../shared/errors");
-;
 let RoomService = class RoomService {
     constructor(hotelRoomRepository, userRepository, database) {
         this.hotelRoomRepository = hotelRoomRepository;
@@ -38,7 +37,7 @@ let RoomService = class RoomService {
                 files.map((file) => __awaiter(this, void 0, void 0, function* () {
                     thumbnail.push({
                         title: file ? file.fieldname : "",
-                        key: file ? file.key : ""
+                        key: file ? file.key : "",
                     });
                 }));
             }
@@ -47,7 +46,7 @@ let RoomService = class RoomService {
                 type: yield this.database.convertStringToObjectId(room_type_id),
                 status,
                 hotel_id: yield this.database.convertStringToObjectId(hotel_id),
-                media: thumbnail ? thumbnail : []
+                media: thumbnail ? thumbnail : [],
             });
             if (!response) {
                 throw new errors_1.BadRequestError("room has been created");
@@ -61,7 +60,7 @@ let RoomService = class RoomService {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.hotelRoomRepository.fetchAll();
             return {
-                rooms: response
+                rooms: response,
             };
         });
     }
@@ -73,7 +72,7 @@ let RoomService = class RoomService {
                 throw new errors_1.BadRequestError("room not found");
             }
             return {
-                room: response
+                room: response,
             };
         });
     }
@@ -85,7 +84,7 @@ let RoomService = class RoomService {
                 throw new errors_1.BadRequestError("failed to delete hotel room");
             }
             return {
-                is_deleted: true
+                is_deleted: true,
             };
         });
     }
@@ -94,13 +93,13 @@ let RoomService = class RoomService {
             const { number, room_type_id, status, files, hotel_id } = args;
             const updateRoomType = yield this.hotelRoomRepository.update(hotel_id, {
                 number,
-                status
+                status,
             });
             if (!updateRoomType) {
                 throw new errors_1.BadRequestError("failed to update room ");
             }
             return {
-                is_updated: true
+                is_updated: true,
             };
         });
     }

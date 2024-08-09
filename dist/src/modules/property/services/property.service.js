@@ -40,7 +40,7 @@ let PropertyService = class PropertyService {
                     thumbnail.push({
                         title: file ? file.fieldname : "",
                         key: file ? file.key : "",
-                        file_type: constants_1.PropertyFileTypes.PICTURE
+                        file_type: constants_1.PropertyFileTypes.PICTURE,
                     });
                 }));
             }
@@ -49,7 +49,7 @@ let PropertyService = class PropertyService {
                 type,
                 address,
                 creator_id: yield this.database.convertStringToObjectId(user === null || user === void 0 ? void 0 : user._id),
-                media: thumbnail ? thumbnail : []
+                media: thumbnail ? thumbnail : [],
             });
             if (!response) {
                 throw new errors_1.BadRequestError("property has been created");
@@ -64,7 +64,7 @@ let PropertyService = class PropertyService {
             const {} = args;
             const response = yield this.propertyRepository.fetchAll();
             return {
-                properties: response
+                properties: response,
             };
         });
     }
@@ -76,7 +76,7 @@ let PropertyService = class PropertyService {
                 throw new errors_1.BadRequestError("property not found");
             }
             return {
-                property: response
+                property: response,
             };
         });
     }
@@ -88,7 +88,7 @@ let PropertyService = class PropertyService {
                 throw new errors_1.BadRequestError("failed to delete property");
             }
             return {
-                is_deleted: true
+                is_deleted: true,
             };
         });
     }

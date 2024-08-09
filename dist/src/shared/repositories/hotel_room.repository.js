@@ -11,8 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const tsyringe_1 = require("tsyringe");
 let HotelRoomRepository = class HotelRoomRepository {
-    constructor() {
-    }
+    constructor() { }
     create(args) {
         throw new Error("Method not implemented.");
     }

@@ -5,7 +5,7 @@ const constants_1 = require("../constants");
 const propertySchema = new mongoose_1.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     type: {
         type: String,
@@ -39,20 +39,22 @@ const propertySchema = new mongoose_1.Schema({
             trim: true,
         },
     },
-    media: [new mongoose_1.Schema({
+    media: [
+        new mongoose_1.Schema({
             title: {
                 type: String,
-                required: true
+                required: true,
             },
             key: {
                 type: String,
-                required: true
+                required: true,
             },
             file_type: {
                 type: String,
-                enum: [constants_1.PropertyFileTypes.PICTURE, constants_1.PropertyFileTypes.VIDEO]
-            }
-        })],
+                enum: [constants_1.PropertyFileTypes.PICTURE, constants_1.PropertyFileTypes.VIDEO],
+            },
+        }),
+    ],
     creator_id: {
         type: mongoose_1.Schema.Types.ObjectId,
         required: true,

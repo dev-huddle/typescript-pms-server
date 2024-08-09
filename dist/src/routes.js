@@ -48,7 +48,7 @@ exports.routes = [
             },
             {
                 path: "/property",
-                router: routers_2.propertyRouter
+                router: routers_2.propertyRouter,
             },
         ],
     },
@@ -57,11 +57,27 @@ exports.routes = [
         routes: [
             {
                 path: "/rooms/types",
-                router: routers_3.hotelRoomTypeRouter
+                router: routers_3.hotelRoomTypeRouter,
             },
             {
                 path: "/rooms",
-                router: routers_3.hotelRoomRouter
+                router: routers_3.hotelRoomRouter,
+            },
+            {
+                path: "/amenities",
+                router: routers_3.hotelAmenityRouter
+            },
+            {
+                path: "/amenities/menu",
+                router: routers_3.hotelAmenityMenuRouter
+            },
+            {
+                path: "/amenities/orders",
+                router: routers_3.hotelOrderRouter
+            },
+            {
+                path: "/bookings",
+                router: routers_3.hotelBookingRouter
             }
         ],
     },

@@ -35,13 +35,13 @@ let RoomTypeService = class RoomTypeService {
                 description,
                 amount,
                 discount_amount: discount_amount ? discount_amount : "",
-                hotel_id: yield this.database.convertStringToObjectId(hotel_id)
+                hotel_id: yield this.database.convertStringToObjectId(hotel_id),
             });
             if (!data) {
                 throw new errors_1.BadRequestError("failed to save room type");
             }
             return {
-                is_created: true
+                is_created: true,
             };
         });
     }
@@ -52,7 +52,7 @@ let RoomTypeService = class RoomTypeService {
                 throw new errors_1.BadRequestError("failed to fetch room types");
             }
             return {
-                room_types: data
+                room_types: data,
             };
         });
     }
@@ -64,7 +64,7 @@ let RoomTypeService = class RoomTypeService {
                 throw new errors_1.BadRequestError("failed to fetch property");
             }
             return {
-                room_type: data
+                room_type: data,
             };
         });
     }
@@ -75,13 +75,13 @@ let RoomTypeService = class RoomTypeService {
                 title,
                 description,
                 amount,
-                discount_amount
+                discount_amount,
             });
             if (!updateRoomType) {
                 throw new errors_1.BadRequestError("failed to update room type");
             }
             return {
-                is_updated: true
+                is_updated: true,
             };
         });
     }
@@ -93,7 +93,7 @@ let RoomTypeService = class RoomTypeService {
                 throw new errors_1.BadRequestError("failed to delete hotel room type");
             }
             return {
-                is_deleted: true
+                is_deleted: true,
             };
         });
     }

@@ -17,7 +17,7 @@ import {
   UpdateHotelRoomInput,
   UpdateHotelRoomOutput,
 } from "../dto";
-import { HotelRoomMedia } from "../../../shared/entities/hotel_room_inventory";
+import { HotelRoomMedia } from "../../../shared/entities/hotel_room_inventory.entity";
 @injectable()
 export default class RoomService {
   constructor(

@@ -3,7 +3,7 @@ import { ServerRouter } from "./shared/interfaces";
 import { StatusCodes } from "./shared/constants";
 import { customerAuthRouter } from "./modules/auth/routers";
 import { propertyRouter } from "./modules/property/routers";
-import { hotelRoomRouter, hotelRoomTypeRouter } from "./modules/hotel/routers";
+import { hotelAmenityMenuRouter, hotelAmenityRouter, hotelBookingRouter, hotelOrderRouter, hotelRoomRouter, hotelRoomTypeRouter } from "./modules/hotel/routers";
 
 export const router = Router({});
 
@@ -54,6 +54,22 @@ export const routes: ServerRouter[] = [
         path: "/rooms",
         router: hotelRoomRouter,
       },
+      {
+        path: "/amenities",
+        router: hotelAmenityRouter
+      },
+      {
+        path: "/amenities/menu",
+        router: hotelAmenityMenuRouter
+      },
+      {
+        path: "/amenities/orders",
+        router: hotelOrderRouter
+      },
+      {
+        path: "/bookings",
+        router: hotelBookingRouter
+      }
     ],
   },
 ];

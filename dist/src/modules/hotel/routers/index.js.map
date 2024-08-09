@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../src/modules/hotel/routers/index.ts"],"names":[],"mappings":";;;;;;AAAA,0EAAqD;AAG5C,8BAHF,0BAAmB,CAGE;AAF5B,gEAA4C;AAEd,0BAFvB,qBAAe,CAEuB"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../src/modules/hotel/routers/index.ts"],"names":[],"mappings":";;;;;;AAAA,0EAAqD;AAQjD,8BARG,0BAAmB,CAQH;AAPvB,gEAA4C;AAQxC,0BARG,qBAAe,CAQH;AAPnB,kFAAwD;AAQpD,6BARG,8BAAkB,CAQH;AAPtB,4FAAiE;AAQ7D,iCARG,mCAAsB,CAQH;AAP1B,kEAA8C;AAQ1C,2BARG,sBAAgB,CAQH;AAPpB,sEAAkD;AAQ9C,6BARG,wBAAkB,CAQH"}

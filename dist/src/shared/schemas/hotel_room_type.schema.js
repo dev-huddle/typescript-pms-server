@@ -21,7 +21,7 @@ const hotelRoomTypeSchema = new mongoose_1.Schema({
     hotel_id: {
         type: mongoose_1.Schema.ObjectId,
         ref: "Property",
-        required: true
+        required: true,
     },
     created_at: {
         type: Date,

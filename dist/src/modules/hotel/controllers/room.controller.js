@@ -36,7 +36,7 @@ let HotelRoomController = class HotelRoomController {
                     room_type_id,
                     status,
                     hotel_id,
-                    files
+                    files,
                 });
                 (0, helper_1.Res)({
                     res,
