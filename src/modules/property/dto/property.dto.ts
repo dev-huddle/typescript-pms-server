@@ -6,6 +6,7 @@ export type CreatePropertyInput = {
   creator_id: string;
   type: PropertyTypes;
   address: PropertyAddress;
+  files?: any;
 };
 
 export type CreatePropertyOutput = {

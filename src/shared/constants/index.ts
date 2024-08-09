@@ -1,6 +1,6 @@
 import { AWSSESTemplates, AWSSNSTargetARN, AWSServices } from "./aws.constant";
 import { FileManagerObjectTypes } from "./filemanager.constant";
-import { PropertyTypes } from "./property.constant";
+import { PropertyFileTypes, PropertyTypes } from "./property.constant";
 import { StatusCodes } from "./server.constant";
 import { StripeCurriencies, StripePaymentMethodType } from "./stripe.constant";
 import { SubscriptionStatus } from "./subscription.constant";
@@ -22,5 +22,6 @@ export {
   FileManagerObjectTypes,
   UserAccountStatus,
   PropertyTypes,
+  PropertyFileTypes,
   UserAccountTypes,
 };

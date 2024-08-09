@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
-import { Property } from "../entities";
-import { PropertyTypes } from "../constants";
+import { Property, PropertyMedia } from "../entities";
+import { PropertyFileTypes, PropertyTypes } from "../constants";
 
 const propertySchema: Schema = new Schema<Property>({
   name: {
@@ -39,6 +39,20 @@ const propertySchema: Schema = new Schema<Property>({
       trim: true,
     },
   },
+  media: [new Schema<PropertyMedia>({
+    title: {
+      type: String,
+      required: true
+    },
+    key: {
+      type: String,
+      required: true
+    },
+    file_type: {
+      type: String,
+      enum: [PropertyFileTypes.PICTURE, PropertyFileTypes.VIDEO]
+    }
+  })],
   creator_id: {
     type: Schema.Types.ObjectId,
     required: true,

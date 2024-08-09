@@ -15,6 +15,8 @@ export default class PropertyController {
     async create(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
 
+            const { files } = req;
+
             const { sub } = req.user;
 
             const {address, type, name} = req.body;
@@ -23,7 +25,8 @@ export default class PropertyController {
                 name,
                 creator_id: sub,
                 address,
-                type
+                type,
+                files
             })
 
             Res({
