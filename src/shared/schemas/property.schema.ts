@@ -5,7 +5,7 @@ import { PropertyFileTypes, PropertyTypes } from "../constants";
 const propertySchema: Schema = new Schema<Property>({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   type: {
     type: String,
@@ -39,20 +39,22 @@ const propertySchema: Schema = new Schema<Property>({
       trim: true,
     },
   },
-  media: [new Schema<PropertyMedia>({
-    title: {
-      type: String,
-      required: true
-    },
-    key: {
-      type: String,
-      required: true
-    },
-    file_type: {
-      type: String,
-      enum: [PropertyFileTypes.PICTURE, PropertyFileTypes.VIDEO]
-    }
-  })],
+  media: [
+    new Schema<PropertyMedia>({
+      title: {
+        type: String,
+        required: true,
+      },
+      key: {
+        type: String,
+        required: true,
+      },
+      file_type: {
+        type: String,
+        enum: [PropertyFileTypes.PICTURE, PropertyFileTypes.VIDEO],
+      },
+    }),
+  ],
   creator_id: {
     type: Schema.Types.ObjectId,
     required: true,

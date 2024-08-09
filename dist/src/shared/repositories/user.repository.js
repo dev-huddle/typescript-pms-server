@@ -72,7 +72,12 @@ let UserRepository = class UserRepository {
     }
     updateWithCustomerId(customer_id, update) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield schemas_1.userSchema.findOneAndUpdate({ stripe_customer_id: customer_id }, update);
+            try {
+                return yield schemas_1.userSchema.findOneAndUpdate({ stripe_customer_id: customer_id }, update);
+            }
+            catch (err) {
+                console.log(err);
+            }
         });
     }
     delete(id) {
@@ -83,6 +88,16 @@ let UserRepository = class UserRepository {
     deleteByCognitoId(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield schemas_1.userSchema.deleteOne({ awscognito_user_id: id });
+        });
+    }
+    clearCardDetails(user_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield schemas_1.userSchema.findOneAndUpdate({ awscognito_user_id: user_id }, {
+                stripe_card_expire_date: "",
+                stripe_card_id: "",
+                stripe_card_last_digits: "",
+                stripe_card_type: "",
+            });
         });
     }
     updateAccountStatus(customer_id, status) {

@@ -13,14 +13,15 @@ exports.routes = exports.router = void 0;
 const express_1 = require("express");
 const constants_1 = require("./shared/constants");
 const routers_1 = require("./modules/auth/routers");
-const routers_2 = require("./modules/subcription/routers");
-const routers_3 = require("./modules/payment/routers");
-const routers_4 = require("./modules/filemanager/routers");
-const routes_1 = require("./modules/account/routes");
+const routers_2 = require("./modules/property/routers");
+const routers_3 = require("./modules/hotel/routers");
 exports.router = (0, express_1.Router)({});
 exports.router.get("/", (_req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.send({ statusCode: constants_1.StatusCodes.OK, message: "successfully passed healthcheck!!!" });
+        res.send({
+            statusCode: constants_1.StatusCodes.OK,
+            message: "successfully passed healthcheck!!!",
+        });
         res.status(constants_1.StatusCodes.OK);
     }
     catch (error) {
@@ -46,46 +47,22 @@ exports.routes = [
                 router: routers_1.customerAuthRouter,
             },
             {
-                path: "/subscriptions",
-                router: routers_2.subscriptionRouter,
-            },
-            {
-                path: "/cards",
-                router: routers_3.cardRouter,
-            },
-            {
-                path: "/folders",
-                router: routers_4.folderRouter,
-            },
-            {
-                path: "/files",
-                router: routers_4.fileRouter,
-            },
-            {
-                path: "/filemanager",
-                router: routers_4.fileManagerRouter,
-            },
-            {
-                path: "/accounts",
-                router: routes_1.accountRouter,
-            },
-            {
-                path: "/payments",
-                router: routers_3.cardRouter,
-            },
-            {
-                path: "/plans",
-                router: routers_2.planRouter,
+                path: "/property",
+                router: routers_2.propertyRouter
             },
         ],
     },
     {
-        base: "admin",
+        base: "hotel",
         routes: [
             {
-                path: "/plans",
-                router: routers_2.adminPlanRouter,
+                path: "/rooms/types",
+                router: routers_3.hotelRoomTypeRouter
             },
+            {
+                path: "/rooms",
+                router: routers_3.hotelRoomRouter
+            }
         ],
     },
 ];

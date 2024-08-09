@@ -35,10 +35,16 @@ let FileManagerRepository = class FileManagerRepository {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 if (folder) {
-                    return yield schemas_1.filemanagerSchema.find({ user: user_id, parent: folder }).skip(skip).limit(limit);
+                    return yield schemas_1.filemanagerSchema
+                        .find({ user: user_id, parent: folder })
+                        .skip(skip)
+                        .limit(limit);
                 }
                 else {
-                    return yield schemas_1.filemanagerSchema.find({ user: user_id }).skip(skip).limit(limit);
+                    return yield schemas_1.filemanagerSchema
+                        .find({ user: user_id })
+                        .skip(skip)
+                        .limit(limit);
                 }
             }
             catch (err) {
@@ -50,7 +56,9 @@ let FileManagerRepository = class FileManagerRepository {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 if (folder) {
-                    return yield schemas_1.filemanagerSchema.countDocuments({ user: user_id, parent: folder }).exec();
+                    return yield schemas_1.filemanagerSchema
+                        .countDocuments({ user: user_id, parent: folder })
+                        .exec();
                 }
                 else {
                     return yield schemas_1.filemanagerSchema.countDocuments({ user: user_id }).exec();

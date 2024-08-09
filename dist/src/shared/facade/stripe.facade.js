@@ -38,7 +38,7 @@ let Stripe = class Stripe {
                     payment_method_types: [constants_1.StripePaymentMethodType.CARD],
                     metadata: {
                         customer,
-                        user_cognito_id: user_id
+                        user_cognito_id: user_id,
                     },
                 });
                 return {
@@ -78,7 +78,9 @@ let Stripe = class Stripe {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { id, payment_id } = args;
-                const response = yield stripe.paymentIntents.confirm(id, { payment_method: payment_id });
+                const response = yield stripe.paymentIntents.confirm(id, {
+                    payment_method: payment_id,
+                });
                 if (!response) {
                     throw new errors_1.InternalServerError("failed to confirm payment");
                 }
@@ -143,7 +145,7 @@ let Stripe = class Stripe {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { payment_method_id, stripe_customer_id } = args;
-                const { card } = yield stripe.paymentMethods.retrieve(stripe_customer_id, payment_method_id);
+                const { card } = yield stripe.paymentMethods.retrieve(payment_method_id);
                 if (!card) {
                     throw new errors_1.InternalServerError("failed to retrieved card");
                 }
@@ -155,7 +157,7 @@ let Stripe = class Stripe {
                 };
             }
             catch (err) {
-                throw new errors_1.InternalServerError("failed attempt to delete card from stripe");
+                throw new errors_1.InternalServerError(err);
             }
         });
     }
@@ -227,7 +229,7 @@ let Stripe = class Stripe {
                         },
                     ],
                     payment_behavior: "default_incomplete",
-                    payment_method,
+                    default_payment_method: payment_method,
                     metadata: {
                         user,
                         plan,
@@ -242,7 +244,7 @@ let Stripe = class Stripe {
                 };
             }
             catch (err) {
-                throw new errors_1.InternalServerError("failed creating subscription");
+                throw new errors_1.InternalServerError(err);
             }
         });
     }
@@ -277,7 +279,7 @@ let Stripe = class Stripe {
                 };
             }
             catch (err) {
-                throw new errors_1.InternalServerError("failed attempt to cancel subscription");
+                throw new errors_1.InternalServerError(err);
             }
         });
     }

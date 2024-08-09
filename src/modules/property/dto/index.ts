@@ -1,10 +1,17 @@
-import { CreatePropertyInput, CreatePropertyOutput, DeletePropertyInput, DeletePropertyOutput, FetchAllPropertyInput, FetchAllPropertyOutput } from "./property.dto";
+import {
+  CreatePropertyInput,
+  CreatePropertyOutput,
+  DeletePropertyInput,
+  DeletePropertyOutput,
+  FetchAllPropertyInput,
+  FetchAllPropertyOutput,
+} from "./property.dto";
 
-export { 
-    CreatePropertyInput, 
-    CreatePropertyOutput, 
-    FetchAllPropertyInput, 
-    FetchAllPropertyOutput,
-    DeletePropertyInput,
-    DeletePropertyOutput
+export {
+  CreatePropertyInput,
+  CreatePropertyOutput,
+  FetchAllPropertyInput,
+  FetchAllPropertyOutput,
+  DeletePropertyInput,
+  DeletePropertyOutput,
 };

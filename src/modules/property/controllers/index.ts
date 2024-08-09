@@ -1,5 +1,3 @@
 import PropertyController from "./property.controller";
 
-export {
-    PropertyController
-}
+export { PropertyController };

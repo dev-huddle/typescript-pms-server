@@ -51,10 +51,11 @@ let CustomerAuthController = class CustomerAuthController {
     confirmSignUp(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { email, confirmationcode } = req.body;
+                const { email, confirmationcode, user_id } = req.body;
                 const response = yield this.customerAuthService.confirmSignup({
                     email,
                     confirmationcode,
+                    userId: user_id,
                 });
                 (0, helper_1.Res)({
                     res,

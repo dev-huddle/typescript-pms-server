@@ -1,5 +1,6 @@
 import { AWSSESTemplates, AWSSNSTargetARN, AWSServices } from "./aws.constant";
 import { FileManagerObjectTypes } from "./filemanager.constant";
+import { HotelRoomStatus } from "./hotel_room.constant";
 import { PropertyFileTypes, PropertyTypes } from "./property.constant";
 import { StatusCodes } from "./server.constant";
 import { StripeCurriencies, StripePaymentMethodType } from "./stripe.constant";
@@ -24,4 +25,5 @@ export {
   PropertyTypes,
   PropertyFileTypes,
   UserAccountTypes,
+  HotelRoomStatus,
 };

@@ -11,9 +11,9 @@ export interface PropertyAddress {
 }
 
 export interface PropertyMedia extends Base {
-    title: string;
-    key: string;
-    file_type: PropertyFileTypes
+  title: string;
+  key: string;
+  file_type: PropertyFileTypes;
 }
 
 export default interface Property extends Base {
@@ -21,5 +21,5 @@ export default interface Property extends Base {
   type: PropertyTypes;
   creator_id: mongoose.Types.ObjectId;
   address: PropertyAddress;
-  media?: PropertyMedia[]
+  media?: PropertyMedia[];
 }

@@ -6,88 +6,92 @@ import { PropertyService } from "../services";
 
 @injectable()
 export default class PropertyController {
-    constructor(
-        private propertyService: PropertyService
-    ){
+  constructor(private propertyService: PropertyService) {}
 
+  async create(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { files } = req;
+
+      const { sub } = req.user;
+
+      const { address, type, name } = req.body;
+
+      const response = await this.propertyService.create({
+        name,
+        creator_id: sub,
+        address,
+        type,
+        files,
+      });
+
+      Res({
+        res,
+        code: StatusCodes.CREATED,
+        message: "successfully created property",
+        data: response,
+      });
+    } catch (err) {
+      next(err);
     }
+  }
 
-    async create(req: Request, res: Response, next: NextFunction): Promise<void> {
-        try {
+  async fetchAll(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const response = await this.propertyService.fetchAll({});
 
-            const { files } = req;
-
-            const { sub } = req.user;
-
-            const {address, type, name} = req.body;
-
-            const response = await this.propertyService.create({
-                name,
-                creator_id: sub,
-                address,
-                type,
-                files
-            })
-
-            Res({
-                res,
-                code: StatusCodes.CREATED,
-                message: "successfully created property",
-                data: response,
-            });
-        } catch(err){
-            next(err)
-        }
+      Res({
+        res,
+        code: StatusCodes.OK,
+        message: "successfully fetched all properties",
+        data: response,
+      });
+    } catch (err) {
+      next(err);
     }
+  }
 
-    async fetchAll(req: Request, res: Response, next: NextFunction): Promise<void> {
-        try {
+  async fetchOne(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const { id } = req.params;
 
-            const response = await this.propertyService.fetchAll({})
+      const response = await this.propertyService.fetchOne({ property_id: id });
 
-            Res({
-                res,
-                code: StatusCodes.OK,
-                message: "successfully fetched all properties",
-                data: response,
-            });
-        } catch(err){
-            next(err)
-        }
+      Res({
+        res,
+        code: StatusCodes.OK,
+        message: "successfully fetched property",
+        data: response,
+      });
+    } catch (err) {
+      next(err);
     }
+  }
 
-    async fetchOne(req: Request, res: Response, next: NextFunction): Promise<void> {
-        try {
+  async deleteOne(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> {
+    try {
+      const { id } = req.params;
 
-            const { id } = req.params;
+      await this.propertyService.delete({ property_id: id });
 
-            const response = await this.propertyService.fetchOne({property_id: id})
-
-            Res({
-                res,
-                code: StatusCodes.OK,
-                message: "successfully fetched property",
-                data: response,
-            });
-        } catch(err){
-            next(err)
-        }
+      Res({
+        res,
+        code: StatusCodes.NO_CONTENT,
+        message: "successfully fetched property",
+      });
+    } catch (err) {
+      next(err);
     }
-
-    async deleteOne(req: Request, res: Response, next: NextFunction): Promise<void> {
-        try {
-
-            const { id } = req.params;
-
-            await this.propertyService.delete({property_id: id})
-
-            Res({
-                res,
-                code: StatusCodes.NO_CONTENT,
-                message: "successfully fetched property",
-            });
-        } catch(err){
-            next(err)
-        }
-    }
+  }
 }

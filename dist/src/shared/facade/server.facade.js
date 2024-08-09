@@ -88,7 +88,7 @@ let Server = class Server {
                     });
                     break;
                 case "customer.subscription.created":
-                    const { id, current_period_end, current_period_start, items, customer } = event.data.object;
+                    const { id, current_period_end, current_period_start, items, customer, } = event.data.object;
                     const userData = yield this.userRepository.fetchOneByCustomerId(customer);
                     if (userData === null || userData === void 0 ? void 0 : userData.isFirstLogin) {
                         yield this.userRepository.updateAccountStatus(userData.stripe_customer_id ? userData.stripe_customer_id : "", constants_1.UserAccountStatus.ACTIVE);
@@ -128,8 +128,6 @@ let Server = class Server {
                     break;
                 case "setup_intent.succeeded":
                     const setupIntentSucceeded = event.data.object;
-                    console.log("setupintentobject: " + JSON.stringify(setupIntentSucceeded));
-                    yield this.loggerService.log(JSON.stringify(setupIntentSucceeded));
                     const card_details = yield this.stripeFacade.fetchCardDetails({
                         payment_method_id: setupIntentSucceeded.payment_method,
                         stripe_customer_id: setupIntentSucceeded.metadata.customer,
@@ -143,9 +141,9 @@ let Server = class Server {
                         stripe_card_expire_date: `${card_details.exp_month}/${card_details.exp_year}`,
                         stripe_card_type: card_details.brand,
                     });
-                    if (!addCard) {
-                        throw new errors_1.BadRequestError("Failed to add card");
-                    }
+                    // if (!addCard) {
+                    //   throw new BadRequestError("Failed to add card");
+                    // }
                     yield this.loggerService.log("successfully add card to user account", {
                         awsId: setupIntentSucceeded.metadata.user_cognito_id,
                     });
@@ -155,6 +153,14 @@ let Server = class Server {
                     break;
                 case "payment_intent.created":
                     const {} = event.data.object;
+                    break;
+                case "payment_intent.canceled":
+                    const PaymentIntentCancelledData = event.data.object;
+                    yield this.userRepository.fetchOneByCustomerId(PaymentIntentCancelledData.customer);
+                    yield this.subscriptionRepository.updateByStripeSubId(PaymentIntentCancelledData.id);
+                    yield this.userRepository.update(PaymentIntentCancelledData === null || PaymentIntentCancelledData === void 0 ? void 0 : PaymentIntentCancelledData._id, {
+                        active_plan: undefined,
+                    });
                     break;
                 case "payment_intent.payment_failed":
                     const {} = event.data.object;

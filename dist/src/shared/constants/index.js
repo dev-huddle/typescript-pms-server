@@ -1,12 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserAccountStatus = exports.FileManagerObjectTypes = exports.SubscriptionStatus = exports.StripePaymentMethodType = exports.StripeCurriencies = exports.AWSSESTemplates = exports.AWSServices = exports.AWSSNSTargetARN = exports.StatusCodes = exports.UserRoles = void 0;
+exports.HotelRoomStatus = exports.UserAccountTypes = exports.PropertyFileTypes = exports.PropertyTypes = exports.UserAccountStatus = exports.FileManagerObjectTypes = exports.SubscriptionStatus = exports.StripePaymentMethodType = exports.StripeCurriencies = exports.AWSSESTemplates = exports.AWSServices = exports.AWSSNSTargetARN = exports.StatusCodes = exports.UserRoles = void 0;
 const aws_constant_1 = require("./aws.constant");
 Object.defineProperty(exports, "AWSSESTemplates", { enumerable: true, get: function () { return aws_constant_1.AWSSESTemplates; } });
 Object.defineProperty(exports, "AWSSNSTargetARN", { enumerable: true, get: function () { return aws_constant_1.AWSSNSTargetARN; } });
 Object.defineProperty(exports, "AWSServices", { enumerable: true, get: function () { return aws_constant_1.AWSServices; } });
 const filemanager_constant_1 = require("./filemanager.constant");
 Object.defineProperty(exports, "FileManagerObjectTypes", { enumerable: true, get: function () { return filemanager_constant_1.FileManagerObjectTypes; } });
+const hotel_room_constant_1 = require("./hotel_room.constant");
+Object.defineProperty(exports, "HotelRoomStatus", { enumerable: true, get: function () { return hotel_room_constant_1.HotelRoomStatus; } });
+const property_constant_1 = require("./property.constant");
+Object.defineProperty(exports, "PropertyFileTypes", { enumerable: true, get: function () { return property_constant_1.PropertyFileTypes; } });
+Object.defineProperty(exports, "PropertyTypes", { enumerable: true, get: function () { return property_constant_1.PropertyTypes; } });
 const server_constant_1 = require("./server.constant");
 Object.defineProperty(exports, "StatusCodes", { enumerable: true, get: function () { return server_constant_1.StatusCodes; } });
 const stripe_constant_1 = require("./stripe.constant");
@@ -16,5 +21,6 @@ const subscription_constant_1 = require("./subscription.constant");
 Object.defineProperty(exports, "SubscriptionStatus", { enumerable: true, get: function () { return subscription_constant_1.SubscriptionStatus; } });
 const user_constant_1 = require("./user.constant");
 Object.defineProperty(exports, "UserAccountStatus", { enumerable: true, get: function () { return user_constant_1.UserAccountStatus; } });
+Object.defineProperty(exports, "UserAccountTypes", { enumerable: true, get: function () { return user_constant_1.UserAccountTypes; } });
 Object.defineProperty(exports, "UserRoles", { enumerable: true, get: function () { return user_constant_1.UserRoles; } });
 //# sourceMappingURL=index.js.map

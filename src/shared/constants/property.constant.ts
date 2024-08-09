@@ -3,6 +3,6 @@ export enum PropertyTypes {
 }
 
 export enum PropertyFileTypes {
-    PICTURE = "PICTURE",
-    VIDEO = "VIDEO"
+  PICTURE = "PICTURE",
+  VIDEO = "VIDEO",
 }

@@ -36,7 +36,10 @@ let StripeStrategy = class StripeStrategy {
                 amount,
                 payment_method,
             });
-            yield this.stripeHelper.paymentConfirm({ id: charge_id, payment_id: payment_method });
+            yield this.stripeHelper.paymentConfirm({
+                id: charge_id,
+                payment_id: payment_method,
+            });
         });
     }
 };

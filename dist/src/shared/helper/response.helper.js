@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Res = void 0;
+exports.Res = Res;
 function Res(args) {
     const { res, code, message, error, data } = args;
     res.status(code).json({
@@ -9,5 +9,4 @@ function Res(args) {
         data,
     });
 }
-exports.Res = Res;
 //# sourceMappingURL=response.helper.js.map

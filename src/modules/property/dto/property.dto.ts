@@ -13,26 +13,24 @@ export type CreatePropertyOutput = {
   is_created: boolean;
 };
 
-export type FetchAllPropertyInput = {
-
-}
+export type FetchAllPropertyInput = {};
 
 export type FetchAllPropertyOutput = {
-    properties: Property[]
-}
+  properties: Property[];
+};
 
 export type FetchOnePropertyInput = {
-    property_id: string;
-}
+  property_id: string;
+};
 
 export type FetchOnePropertyOutput = {
-    property: Property
-}
+  property: Property;
+};
 
 export type DeletePropertyInput = {
-    property_id: string
-}
+  property_id: string;
+};
 
 export type DeletePropertyOutput = {
-    is_deleted: boolean;
-}
+  is_deleted: boolean;
+};

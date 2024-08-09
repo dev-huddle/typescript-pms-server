@@ -290,7 +290,9 @@ let AWSCognito = class AWSCognito {
                 const command = new client_cognito_identity_provider_1.ChangePasswordCommand(params);
                 const response = yield this.client.send(command);
                 return {
-                    isChanged: response.$metadata.httpStatusCode === constants_1.StatusCodes.CREATED ? true : false,
+                    isChanged: response.$metadata.httpStatusCode === constants_1.StatusCodes.CREATED
+                        ? true
+                        : false,
                 };
             }
             catch (err) {

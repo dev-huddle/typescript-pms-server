@@ -43,7 +43,10 @@ let SubscriptionRepository = class SubscriptionRepository {
     }
     fetchActiveByUserId(user_id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield schemas_1.subscriptionSchema.findOne({ user: user_id, status: constants_1.SubscriptionStatus.ACTIVE });
+            return yield schemas_1.subscriptionSchema.findOne({
+                user: user_id,
+                status: constants_1.SubscriptionStatus.ACTIVE,
+            });
         });
     }
     update(id, update) {

@@ -32,9 +32,13 @@ const userSchema = new mongoose_1.Schema({
             constants_1.UserAccountStatus.ACTIVE,
             constants_1.UserAccountStatus.BLOCKED,
             constants_1.UserAccountStatus.INCOMPLETE,
-            constants_1.UserAccountStatus.UNCONFIRM,
         ],
         required: true,
+    },
+    account_type: {
+        type: String,
+        enum: [constants_1.UserAccountTypes.INDIVIDUAL, constants_1.UserAccountTypes.ORGANIZATION],
+        default: constants_1.UserAccountTypes.INDIVIDUAL,
     },
     isFirstLogin: {
         type: Boolean,

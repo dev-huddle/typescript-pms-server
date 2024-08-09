@@ -1,8 +1,4 @@
 import {
-  ChangepasswordInput,
-  ChangepasswordOutput,
-} from "../../modules/account/dto/account.dto";
-import {
   AWSCognitoChangepasswordInput,
   AWSCognitoChangepasswordOutput,
   AWSCognitoConfirmForgotPasswordInput,
@@ -85,8 +81,6 @@ export {
   AWSCognitoGetProfileOutput,
   AWSCognitoUpdateProfileInput,
   AWSCognitoUpdateProfileOutput,
-  ChangepasswordInput,
-  ChangepasswordOutput,
   DeleteCustomerInput,
   DeleteCustomerOutput,
   StripeCreatePlanOutput,

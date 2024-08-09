@@ -46,7 +46,7 @@ let CustomerAuthService = class CustomerAuthService {
             const user = yield this.userRepository.create({
                 awscognito_user_id: response.userId,
                 stripe_customer_id: customer_id,
-                status: constants_1.UserAccountStatus.UNCONFIRM,
+                status: constants_1.UserAccountStatus.INCOMPLETE,
             });
             if (!user) {
                 throw new errors_1.BadRequestError("failed to add user record");
@@ -57,6 +57,8 @@ let CustomerAuthService = class CustomerAuthService {
     confirmSignup(args) {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.awsCognito.confirmSignUp(args);
+            // change user account status from UNCONFIRMED to ACTIVE
+            yield this.userRepository.updateAccountStatus(args.userId, constants_1.UserAccountStatus.ACTIVE);
             //TODO: add logic to confirm user here
             return response;
         });
