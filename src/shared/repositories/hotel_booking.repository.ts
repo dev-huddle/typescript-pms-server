@@ -13,6 +13,9 @@ export default class HotelBookingRepository implements IRepository<HotelBooking>
     fetchAll(): Promise<HotelBooking[]> {
         throw new Error("Method not implemented.");
     }
+    fetchAllByBookee(bookee_id: string): Promise<HotelBooking[]> {
+        throw new Error("Method not implemented.");
+    }
     fetchOneById(id: string): Promise<HotelBooking | null> {
         throw new Error("Method not implemented.");
     }
