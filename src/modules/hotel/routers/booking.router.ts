@@ -34,6 +34,13 @@ hotelBookingRouter.patch(
     hotelBookingController.changeDate(req, res, next),
 );
 
+hotelBookingRouter.patch(
+  "/change_room/:id",
+  authMiddleware,
+  (req: Request, res: Response, next: NextFunction) =>
+    hotelBookingController.changeRoom(req, res, next),
+);
+
 hotelBookingRouter.get(
   "/",
   authMiddleware,

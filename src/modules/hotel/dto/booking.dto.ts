@@ -64,4 +64,13 @@ export interface CreateHotelBookingInput {
   export interface ChangeDateHotelBookingOutput {
     is_changed: boolean;
   }
+
+  export interface ChangeRoomHotelBookingInput {
+    booking_id: string;
+    room_id: string;
+  }
+
+  export interface ChangeRoomHotelBookingOutput {
+   is_changed: boolean;
+  }
   

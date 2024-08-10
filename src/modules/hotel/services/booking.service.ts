@@ -1,11 +1,13 @@
 import { injectable } from "tsyringe";
 import { BadRequestError } from "../../../shared/errors";
-import { HotelBookingRepository } from "../../../shared/repositories";
+import { HotelBookingRepository, HotelRoomRepository } from "../../../shared/repositories";
 import {
   CancelHotelBookingInput,
   CancelHotelBookingOutput,
   ChangeDateHotelBookingInput,
   ChangeDateHotelBookingOutput,
+  ChangeRoomHotelBookingInput,
+  ChangeRoomHotelBookingOutput,
   CreateHotelBookingInput,
   CreateHotelBookingOutput,
   DeleteHotelBookingInput,
@@ -144,6 +146,23 @@ export default class HotelBookingService {
 
     if(!response){
       throw new BadRequestError("failed to change date for booking")
+    }
+
+    return {
+      is_changed: true
+    }
+  }
+
+  async changeRoom(args: ChangeRoomHotelBookingInput): Promise<ChangeRoomHotelBookingOutput> {
+
+    const { booking_id, room_id } = args;
+
+    const response = await this.hotelBookingRepository.update(booking_id, {
+      hotel_room_id: await this.database.convertStringToObjectId(room_id)
+    });
+
+    if(!response){
+      throw new BadRequestError("failed to change room for booking")
     }
 
     return {

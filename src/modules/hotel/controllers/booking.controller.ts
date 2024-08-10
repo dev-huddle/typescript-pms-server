@@ -132,4 +132,22 @@ export default class HotelBookingController {
       next(err);
     }
   }
+
+  async changeRoom(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id } = req.params;
+
+      const { room_id } = req.body;
+
+      await this.hotelBookingService.changeRoom({ booking_id: id, room_id });
+
+      Res({
+        res,
+        code: StatusCodes.NO_CONTENT,
+        message: "Successfully change hotel booking room",
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
 }
