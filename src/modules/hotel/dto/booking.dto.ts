@@ -1,3 +1,5 @@
+import { HotelBooking } from "../../../shared/entities";
+
 export interface CreateHotelBookingInput {
     guest_id: string;
     room_id: string;
@@ -12,7 +14,7 @@ export interface CreateHotelBookingInput {
   }
   
   export interface FetchAllHotelBookingOutput {
-    bookings: any[]; // Replace with the actual booking type
+    bookings: HotelBooking[]; 
   }
   
   export interface FetchOneHotelBookingInput {
@@ -20,7 +22,7 @@ export interface CreateHotelBookingInput {
   }
   
   export interface FetchOneHotelBookingOutput {
-    booking: any; // Replace with the actual booking type
+    booking: HotelBooking;
   }
   
   export interface UpdateHotelBookingInput {
@@ -51,5 +53,15 @@ export interface CreateHotelBookingInput {
 
   export interface CancelHotelBookingOutput {
     is_canceled: boolean;
+  }
+
+  export interface ChangeDateHotelBookingInput {
+    booking_id: string;
+    check_in_date?: Date;
+    check_out_date?: Date;
+  }
+
+  export interface ChangeDateHotelBookingOutput {
+    is_changed: boolean;
   }
   

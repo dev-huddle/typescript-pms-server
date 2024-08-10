@@ -4,6 +4,8 @@ import { HotelBookingRepository } from "../../../shared/repositories";
 import {
   CancelHotelBookingInput,
   CancelHotelBookingOutput,
+  ChangeDateHotelBookingInput,
+  ChangeDateHotelBookingOutput,
   CreateHotelBookingInput,
   CreateHotelBookingOutput,
   DeleteHotelBookingInput,
@@ -125,6 +127,27 @@ export default class HotelBookingService {
 
     return {
       is_canceled: true
+    }
+  }
+
+  async changeDate(args: ChangeDateHotelBookingInput): Promise<ChangeDateHotelBookingOutput> {
+
+    const { booking_id, check_in_date, check_out_date } = args;
+
+    // TODO: ensure new date doesnt overlap with someone else's
+
+    const response = await this.update({
+      booking_id,
+      check_in_date,
+      check_out_date
+    });
+
+    if(!response){
+      throw new BadRequestError("failed to change date for booking")
+    }
+
+    return {
+      is_changed: true
     }
   }
 }

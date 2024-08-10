@@ -114,4 +114,22 @@ export default class HotelBookingController {
       next(err);
     }
   }
+
+  async changeDate(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id } = req.params;
+
+      const { check_in_date, check_out_date } = req.body;
+
+      await this.hotelBookingService.changeDate({ booking_id: id, check_in_date, check_out_date });
+
+      Res({
+        res,
+        code: StatusCodes.NO_CONTENT,
+        message: "Successfully change hotel booking date",
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
 }

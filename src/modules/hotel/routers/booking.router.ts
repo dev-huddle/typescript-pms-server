@@ -27,6 +27,13 @@ hotelBookingRouter.patch(
     hotelBookingController.cancel(req, res, next),
 );
 
+hotelBookingRouter.patch(
+  "/change_date/:id",
+  authMiddleware,
+  (req: Request, res: Response, next: NextFunction) =>
+    hotelBookingController.changeDate(req, res, next),
+);
+
 hotelBookingRouter.get(
   "/",
   authMiddleware,
