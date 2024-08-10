@@ -134,7 +134,7 @@ export default class HotelBookingService {
 
     const { booking_id, check_in_date, check_out_date } = args;
 
-    // TODO: ensure new date doesnt overlap with someone else's
+    // TODO: ensure new date doesnt overlap with someone else'sg 
 
     const response = await this.update({
       booking_id,

@@ -1,7 +1,6 @@
 import { injectable } from "tsyringe";
 import {
   HotelRoomRepository,
-  UserRepository,
 } from "../../../shared/repositories";
 import { Database } from "../../../shared/facade";
 import { BadRequestError } from "../../../shared/errors";
@@ -10,7 +9,6 @@ import {
   CreateHotelRoomOutput,
   DeleteHotelRoomInput,
   DeleteHotelRoomOutput,
-  FetchAllHotelRoomInput,
   FetchAllHotelRoomOutput,
   FetchOneHotelRoomInput,
   FetchOneHotelRoomOutput,
@@ -18,11 +16,11 @@ import {
   UpdateHotelRoomOutput,
 } from "../dto";
 import { HotelRoomMedia } from "../../../shared/entities/hotel_room_inventory.entity";
+
 @injectable()
 export default class RoomService {
   constructor(
     private hotelRoomRepository: HotelRoomRepository,
-    private userRepository: UserRepository,
     private database: Database,
   ) {}
 
@@ -101,11 +99,27 @@ export default class RoomService {
   }
 
   async update(args: UpdateHotelRoomInput): Promise<UpdateHotelRoomOutput> {
-    const { number, room_type_id, status, files, hotel_id } = args;
+    const { number, status, hotel_id, files } = args;
+
+    let thumbnail: HotelRoomMedia[] = [];
+
+    if (files?.length) {
+      (
+        files as unknown as Array<
+          { [fieldname: string]: File[] } | File[] | undefined
+        >
+      ).map(async (file: any) => {
+        thumbnail.push({
+          title: file ? file.fieldname : "",
+          key: file ? file.key : "",
+        });
+      });
+    }
 
     const updateRoomType = await this.hotelRoomRepository.update(hotel_id, {
       number,
       status,
+      media: thumbnail ? thumbnail : [],
     });
 
     if (!updateRoomType) {
