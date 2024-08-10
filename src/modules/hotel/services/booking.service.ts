@@ -179,7 +179,7 @@ export default class HotelBookingService {
     const { booking_id } = args;
 
     const response = await this.hotelBookingRepository.update(booking_id, {
-     check_in_date: new Date()
+     actual_check_in_date: new Date()
     });
 
     if(!response){
@@ -196,7 +196,7 @@ export default class HotelBookingService {
     const { booking_id } = args;
 
     const response = await this.hotelBookingRepository.update(booking_id, {
-     check_out_date: new Date()
+     actual_check_out_date: new Date()
     });
 
     if(!response){
