@@ -3,8 +3,7 @@ export interface CreateHotelBookingInput {
     room_id: string;
     check_in_date: Date;
     check_out_date: Date;
-    status: string;
-    amount: number;
+    amount: string;
   }
   
   export interface CreateHotelBookingOutput {
@@ -44,5 +43,13 @@ export interface CreateHotelBookingInput {
   
   export interface DeleteHotelBookingOutput {
     is_deleted: boolean;
+  }
+
+  export interface CancelHotelBookingInput {
+    booking_id: string;
+  }
+
+  export interface CancelHotelBookingOutput {
+    is_canceled: boolean;
   }
   

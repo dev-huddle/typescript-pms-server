@@ -1,3 +1,5 @@
 export enum HotelBookingStatus {
-    CONFIRMED = "CONFIRMED"
+    CONFIRMED = "CONFIRMED",
+    CANCELLED = "CANCELLED",
+    UNCONFIRMED = "UNCONFIRMED"
 }

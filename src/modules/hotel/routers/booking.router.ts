@@ -20,6 +20,13 @@ hotelBookingRouter.patch(
     hotelBookingController.update(req, res, next),
 );
 
+hotelBookingRouter.patch(
+  "/cancel/:id",
+  authMiddleware,
+  (req: Request, res: Response, next: NextFunction) =>
+    hotelBookingController.cancel(req, res, next),
+);
+
 hotelBookingRouter.get(
   "/",
   authMiddleware,

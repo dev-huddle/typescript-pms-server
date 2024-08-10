@@ -10,15 +10,14 @@ export default class HotelBookingController {
 
   async create(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { guest_id, room_id, check_in_date, check_out_date, status, amount } = req.body;
+      const { guest_id, room_id, check_in_date, check_out_date, amount } = req.body;
 
       const response = await this.hotelBookingService.create({
         guest_id,
         room_id,
         check_in_date,
         check_out_date,
-        status,
-        amount,
+        amount
       });
 
       Res({
@@ -94,6 +93,22 @@ export default class HotelBookingController {
         res,
         code: StatusCodes.NO_CONTENT,
         message: "Successfully deleted hotel booking",
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async cancel(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id } = req.params;
+
+      await this.hotelBookingService.cancel({ booking_id: id });
+
+      Res({
+        res,
+        code: StatusCodes.NO_CONTENT,
+        message: "Successfully cancel hotel booking",
       });
     } catch (err) {
       next(err);

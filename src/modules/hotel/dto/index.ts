@@ -1,6 +1,6 @@
 import { CreateHotelAmenityInput, CreateHotelAmenityOutput, FetchAllHotelAmenityOutput, FetchOneHotelAmenityInput, FetchOneHotelAmenityOutput, UpdateHotelAmenityInput, UpdateHotelAmenityOutput, DeleteHotelAmenityInput, DeleteHotelAmenityOutput } from "./amenity.dto";
 import { CreateHotelAmenityMenuInput, CreateHotelAmenityMenuOutput, DeleteHotelAmenityMenuInput, DeleteHotelAmenityMenuOutput, FetchAllHotelAmenityMenuInput, FetchAllHotelAmenityMenuOutput, FetchOneHotelAmenityMenuInput, FetchOneHotelAmenityMenuOutput, UpdateHotelAmenityMenuInput, UpdateHotelAmenityMenuOutput } from "./amenity_menu.dto";
-import { CreateHotelBookingInput, CreateHotelBookingOutput, FetchAllHotelBookingOutput, FetchOneHotelBookingInput, FetchOneHotelBookingOutput, UpdateHotelBookingInput, UpdateHotelBookingOutput, DeleteHotelBookingInput, DeleteHotelBookingOutput } from "./booking.dto";
+import { CreateHotelBookingInput, CreateHotelBookingOutput, FetchAllHotelBookingOutput, FetchOneHotelBookingInput, FetchOneHotelBookingOutput, UpdateHotelBookingInput, UpdateHotelBookingOutput, DeleteHotelBookingInput, DeleteHotelBookingOutput, CancelHotelBookingInput, CancelHotelBookingOutput } from "./booking.dto";
 import { CreateHotelOrderInput, CreateHotelOrderOutput, FetchAllHotelOrderOutput, FetchOneHotelOrderInput, FetchOneHotelOrderOutput, UpdateHotelOrderInput, UpdateHotelOrderOutput, DeleteHotelOrderInput, DeleteHotelOrderOutput } from "./order.dto";
 import {
   CreateHotelRoomInput,
@@ -84,5 +84,7 @@ export {
   UpdateHotelBookingInput,
   UpdateHotelBookingOutput,
   DeleteHotelBookingInput,
-  DeleteHotelBookingOutput
+  DeleteHotelBookingOutput,
+  CancelHotelBookingInput,
+  CancelHotelBookingOutput
 };

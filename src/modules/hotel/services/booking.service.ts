@@ -2,6 +2,8 @@ import { injectable } from "tsyringe";
 import { BadRequestError } from "../../../shared/errors";
 import { HotelBookingRepository } from "../../../shared/repositories";
 import {
+  CancelHotelBookingInput,
+  CancelHotelBookingOutput,
   CreateHotelBookingInput,
   CreateHotelBookingOutput,
   DeleteHotelBookingInput,
@@ -23,14 +25,19 @@ export default class HotelBookingService {
 ) {}
 
   async create(args: CreateHotelBookingInput): Promise<CreateHotelBookingOutput> {
-    const { guest_id, room_id, check_in_date, check_out_date, status, amount } = args;
+    const { guest_id, room_id, check_in_date, check_out_date } = args;
 
+    // convert mongoose objectid to string
+    const bookee_id = await this.database.convertStringToObjectId(guest_id!);
+    const hotel_room_id = await this.database.convertStringToObjectId(room_id!);
+
+    // add hotel bookings to hotel bookings table
     const response = await this.hotelBookingRepository.create({
-      bookee_id: await this.database.convertStringToObjectId(guest_id!),
-      hotel_room_id:  await this.database.convertStringToObjectId(room_id!),
-      check_in_date: check_in_date,
-      check_out_date: check_out_date,
-      status: status as HotelBookingStatus,
+      bookee_id,
+      hotel_room_id,
+      check_in_date,
+      check_out_date,
+      status: HotelBookingStatus.UNCONFIRMED,
     });
 
     if (!response) {
@@ -99,5 +106,25 @@ export default class HotelBookingService {
     return {
       is_deleted: true,
     };
+  }
+
+  async cancel(args: CancelHotelBookingInput): Promise<CancelHotelBookingOutput> {
+
+    const { booking_id } = args;
+
+    // TODO: add time checker to prevent irregular cancellation
+
+    const response = await this.update({
+      booking_id,
+      status: HotelBookingStatus.CANCELLED
+    });
+
+    if(!response){
+      throw new BadRequestError("failed to cancel hotel booking")
+    }
+
+    return {
+      is_canceled: true
+    }
   }
 }
