@@ -150,4 +150,38 @@ export default class HotelBookingController {
       next(err);
     }
   }
+
+  async checkIn(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+
+      const { booking_id } = req.body;
+
+      await this.hotelBookingService.checkIn({ booking_id });
+
+      Res({
+        res,
+        code: StatusCodes.NO_CONTENT,
+        message: "Successfully check into room",
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async checkOut(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+
+      const { booking_id } = req.body;
+
+      await this.hotelBookingService.checkOut({ booking_id });
+
+      Res({
+        res,
+        code: StatusCodes.NO_CONTENT,
+        message: "Successfully check out of room",
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
 }

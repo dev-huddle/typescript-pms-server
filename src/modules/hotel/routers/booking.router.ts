@@ -41,6 +41,20 @@ hotelBookingRouter.patch(
     hotelBookingController.changeRoom(req, res, next),
 );
 
+hotelBookingRouter.patch(
+  "/check_in",
+  authMiddleware,
+  (req: Request, res: Response, next: NextFunction) =>
+    hotelBookingController.checkIn(req, res, next),
+);
+
+hotelBookingRouter.patch(
+  "/check_out",
+  authMiddleware,
+  (req: Request, res: Response, next: NextFunction) =>
+    hotelBookingController.checkOut(req, res, next),
+);
+
 hotelBookingRouter.get(
   "/",
   authMiddleware,

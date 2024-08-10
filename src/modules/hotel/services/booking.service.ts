@@ -8,6 +8,10 @@ import {
   ChangeDateHotelBookingOutput,
   ChangeRoomHotelBookingInput,
   ChangeRoomHotelBookingOutput,
+  CheckInHotelBookingInput,
+  CheckInHotelBookingOutput,
+  CheckOutHotelBookingInput,
+  CheckOutHotelBookingOutput,
   CreateHotelBookingInput,
   CreateHotelBookingOutput,
   DeleteHotelBookingInput,
@@ -167,6 +171,40 @@ export default class HotelBookingService {
 
     return {
       is_changed: true
+    }
+  }
+
+  async checkIn(args: CheckInHotelBookingInput): Promise<CheckInHotelBookingOutput> {
+
+    const { booking_id } = args;
+
+    const response = await this.hotelBookingRepository.update(booking_id, {
+     check_in_date: new Date()
+    });
+
+    if(!response){
+      throw new BadRequestError("failed to checkin from room")
+    }
+
+    return {
+      is_check_in: true
+    }
+  }
+
+  async checkOut(args: CheckOutHotelBookingInput): Promise<CheckOutHotelBookingOutput> {
+
+    const { booking_id } = args;
+
+    const response = await this.hotelBookingRepository.update(booking_id, {
+     check_out_date: new Date()
+    });
+
+    if(!response){
+      throw new BadRequestError("failed to checkout from room")
+    }
+
+    return {
+      is_check_out: true
     }
   }
 }
